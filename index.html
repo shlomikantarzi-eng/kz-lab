@@ -246,6 +246,8 @@ details[open] summary{margin-bottom:10px}
 .sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
 .sc{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px}
 .sc b{color:var(--kz)} .sc p{font-size:.92rem}
+.fblk{display:block;position:relative;background:#FFF3B0;outline:2px solid #E0B800;border-radius:6px;padding:8px 6px 4px;margin-top:16px;direction:ltr;unicode-bidi:isolate}
+.fbl{position:absolute;top:-10px;right:8px}
 mark.fmk{unicode-bidi:isolate;direction:ltr;background:#FFE45C;color:#1B2A3A;font-weight:700;border-radius:4px;padding:1px 4px;outline:2px solid #E0B800}
 .fmt{unicode-bidi:isolate;font:700 .8rem var(--f-body);color:#fff;background:#D93025;border-radius:999px;padding:1px 8px;white-space:nowrap}
 mark.srch{background:#FFE45C;color:#1B2A3A;font-weight:700;border-radius:4px;padding:1px 6px}
@@ -403,14 +405,14 @@ mark.srch{background:#FFE45C;color:#1B2A3A;font-weight:700;border-radius:4px;pad
 
 &lt;body&gt; … 29,000 תווים … &lt;/body&gt;</pre>
 <pre class="l A" id="p1-head">&lt;title&gt;מענק עבודה ... – כל-זכות&lt;/title&gt;
-<span class="add">&lt;link rel="canonical" href="…/מענק_עבודה_…"&gt;
-&lt;meta name="description" content="מענק של כ-4,000 ₪ לשנה"&gt;
-&lt;script type="application/ld+json"&gt;
+<span class="add"><mark class="fmk">&lt;link rel="canonical" href="…/מענק_עבודה_…"&gt;</mark>  <b class="fmt">← כתובת רשמית</b>
+<mark class="fmk">&lt;meta name="description" content="מענק של כ-4,000 ₪ לשנה"&gt;</mark>  <b class="fmt">← תקציר</b>
+<span class="fblk"><b class="fmt fbl">כרטיס זיהוי →</b>&lt;script type="application/ld+json"&gt;
 { "@type": "GovernmentService",
   "name": "מענק עבודה",
   "provider": "רשות המסים בישראל",
   "dateModified": "2026-07-06" }
-&lt;/script&gt;</span></pre>
+&lt;/script&gt;</span></span></pre>
           </div>
         </div>
       </div>
