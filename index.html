@@ -345,6 +345,13 @@ mark.srch{background:#FFE45C;color:#1B2A3A;font-weight:700;border-radius:4px;pad
 .kd{font-size:.85rem;color:var(--muted)} .kd b{font:inherit;font-weight:700}
 .ks{width:100%;height:36px;display:block;margin-top:4px}
 .ksrc{font-size:.75rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:4px;margin-top:2px}
+#p2 .panes{grid-template-columns:1fr;max-width:780px;margin-inline:auto;width:100%}
+#p2[data-state="now"] #p2-after,#p2[data-state="after"] #p2-today{display:none}
+#p2[data-state="now"] .jflow .jr.good,#p2[data-state="after"] .jflow .jr.bad{display:none}
+.hlg{font:700 .75rem var(--f-body);background:#FFF3B0;color:#6B5600;border:1px solid #E0B800;border-radius:999px;padding:2px 10px;white-space:nowrap;align-self:center}
+#p2-today .v{outline:2px solid #E0B800;outline-offset:1px}
+#p2-after .valid,#p2-after .editor{outline:3px solid #E0B800;outline-offset:2px;border-radius:8px}
+#p2-after .valid{background:#FFF3B0}
 </style>
 </head>
 <body>
@@ -461,14 +468,14 @@ public static function onOutputPageParserOutput( OutputPage $out, ParserOutput $
     </div>
     <div class="live"><div class="lh"><span class="tagx">קישורים וכלי בדיקה</span>הפתק הנסתר לעורך</div><ol><li><a href="https://www.kolzchut.org.il/he/מענק_עבודה_(מענק_הכנסה,_מס_הכנסה_שלילי)" target="_blank" rel="noopener">מענק עבודה</a>: הגיל, הסכומים והתאריכים כמו שהקורא רואה.</li><li><a href="https://www.kolzchut.org.il/w/he/index.php?title=מענק_עבודה_(מענק_הכנסה,_מס_הכנסה_שלילי)&action=edit" target="_blank" rel="noopener">קוד המקור של הדף</a> ← <kbd>Ctrl</kbd>+<kbd>F</kbd> ומחפשים: <mark class="srch">בעדכון השנתי לשנות</mark> <button class="btn" id="copySrch" style="padding:2px 10px;font-size:.85rem">העתק</button> ← הפתק לעורך:<div class="notebox"><span class="nb-h">קוד המקור · מענק עבודה</span><code>&lt;!-- <mark class="srch">בעדכון השנתי לשנות</mark> ל"שהיו בנות 66-60 בשנת 2026" … 67-60 בשנת 2027 --&gt;</code></div><span class="cm" style="font-size:.85rem">הפתק נמחק כשהדף נבנה. לכן הוא לא מגיע לקורא ולא ל-AI, וגם לא מופיע ב-View Source.</span></li><li>באותו קוד: <kbd>Ctrl</kbd>+<kbd>F</kbd> <b>₪</b> ← הסכומים מוקלדים ביד.</li></ol></div>
     <div class="lh" style="font:700 .95rem var(--f-head)">הדמיה: מה קורה בינואר</div>
-    <div class="controls"><button class="play alt" id="jan2">📅 מגיע ינואר: הגיל עולה ל-67</button><button class="play" id="jan2r" style="background:var(--panel);color:var(--kz);border:1px solid var(--kz)">התחל מחדש</button></div>
+    <div class="controls"><div class="seg" role="group" aria-label="מצב"><button class="now" data-set="now" aria-pressed="true">היום</button><button class="aft" data-set="after" aria-pressed="false">אחרי</button></div><button class="play alt" id="jan2">📅 מגיע ינואר: הגיל עולה ל-67</button><button class="play" id="jan2r" style="background:var(--panel);color:var(--kz);border:1px solid var(--kz)">התחל מחדש</button></div>
     <div class="narr" id="p2-narr"></div>
     <div class="panes">
-      <div class="pane"><div class="phead"><div><div class="pt" style="color:var(--warn)">היום · כל מספר מוקלד ביד</div><div class="ps">העורך מחפש ומחליף בכל מקום</div></div></div>
+      <div class="pane" id="p2-today"><div class="phead"><div><div class="pt" style="color:var(--warn)">היום · כל מספר מוקלד ביד</div><div class="ps">העורך מחפש ומחליף בכל מקום</div></div><span class="hlg">צהוב = מוקלד ביד</span></div>
         <div class="pbody"><div class="site"><div class="url">kolzchut.org.il/he/מענק_עבודה_…</div><div class="hdr">כל-זכות <span>הדמיה</span></div><div class="body"><h4>מענק עבודה<small>(זכות)</small></h4><div class="focus"><p><b>מי זכאי:</b> נשים שהיו בנות <span class="v ok" data-v="o-a1">66-60</span></p><p><b>מקדמה:</b> שכירות בנות <span class="v ok" data-v="o-a2">66-60</span></p><p><b>דוגמה:</b> אישה בת <span class="v ok" data-v="o-o">67</span> כבר לא זכאית</p></div></div></div>
           <div class="card2"><div><b>העורך</b><div class="cm" style="font-size:.88rem" id="o-ed">מחכה לינואר</div></div><span class="badge b-man">✋ ידני</span></div>
           <div class="narr ai-say" style="min-height:0"><span class="sn">🤖 מה AI עונה</span><span id="o-ai">"נשים בנות 60 עד 66 זכאיות."</span></div></div></div>
-      <div class="pane"><div class="phead"><div><div class="pt" style="color:var(--site)">אחרי · כל מספר נשמר פעם אחת</div><div class="ps">המספר מגיע מהטבלה</div></div></div>
+      <div class="pane" id="p2-after"><div class="phead"><div><div class="pt" style="color:var(--site)">אחרי · כל מספר נשמר פעם אחת</div><div class="ps">המספר מגיע מהטבלה</div></div><span class="hlg">צהוב = מה שנוסף בשינוי</span></div>
         <div class="pbody"><div class="site"><div class="url">kolzchut.org.il/he/מענק_עבודה_…</div><div class="hdr">כל-זכות <span>הדמיה</span></div><div class="body"><h4>מענק עבודה<small>(זכות)</small></h4><div class="focus"><p><b>מי זכאי:</b> נשים שהיו בנות <span class="v ok" data-v="n-a1">66-60</span><span class="valid">בתוקף ל-<span data-v="n-y">2026</span></span></p><p><b>מקדמה:</b> שכירות בנות <span class="v ok" data-v="n-a2">66-60</span></p><p><b>דוגמה:</b> אישה בת <span class="v ok" data-v="n-o">67</span> כבר לא זכאית</p></div></div></div>
           <div class="editor"><div class="eh"><span>הטבלה · <b>נתון:מענק עבודה</b></span><span class="badge b-man">✋ שורה אחת</span></div>
             <table><thead><tr><th>נתון</th><th>ערך</th><th>בתוקף ל</th></tr></thead><tbody><tr id="n-row"><td>גיל_נשים</td><td>66-60</td><td>2026</td></tr></tbody></table></div>
@@ -672,10 +679,10 @@ if (accept.includes('text/markdown')) {
   function janReset(){clear();$('jflow').hidden=true;['o-a1','o-a2','n-a1','n-a2'].forEach(k=>setV(k,'66-60','ok'));setV('o-o','67','ok');setV('n-o','67','ok');setV('n-y','2026');
     const r=$('n-row');r.className='';r.cells[1].textContent='66-60';r.cells[2].textContent='2026';$('o-ed').textContent='מחכה לינואר';
     $('o-ai').textContent='"נשים בנות 60 עד 66 זכאיות."';$('n-ai').textContent='"נשים בנות 60 עד 66 זכאיות (נכון ל-2026)."';$('jan2').disabled=false;
-    narr('p2','ינואר','הגיל עולה ל-67. אותו עדכון, בשתי שיטות.');}
+    const af=$('p2').dataset.state==='after';narr('p2',af?'אחרי':'היום',af?'המספרים בטבלה אחת. לוחצים "מגיע ינואר".':'כל מספר מוקלד ביד. לוחצים "מגיע ינואר".');}
   $('jan2r').addEventListener('click',janReset);
   $('jan2').addEventListener('click',function(){janReset();this.disabled=true;const ed=$('o-ed');
-    narr('p2','ינואר','העורך מעדכן את הגיל בשתי השיטות.');
+    const af=$('p2').dataset.state==='after';narr('p2','ינואר',af?'העורך משנה שורה אחת בטבלה.':'העורך מחפש ומחליף ביד, מקום אחרי מקום.');
     timers.push(setTimeout(()=>{const r=$('n-row');r.cells[1].textContent='67-60';r.cells[2].textContent='2027';r.className='hot';},T(600)));
     timers.push(setTimeout(()=>{setV('n-a1','67-60','ok');setV('n-a2','67-60','ok');setV('n-o','68','ok');setV('n-y','2027');$('n-ai').textContent='"נשים בנות 60 עד 67 זכאיות (נכון ל-2027)."';},T(1200)));
     timers.push(setTimeout(()=>{setV('o-a1',null,'wip');ed.textContent='מחפש… מקום 1: "מי זכאי"';},T(600)));
@@ -684,7 +691,7 @@ if (accept.includes('text/markdown')) {
     timers.push(setTimeout(()=>{setV('o-a2','67-60','ok');},T(2800)));
     timers.push(setTimeout(()=>{setV('o-o',null,'stale');ed.textContent='✗ פספס את "דוגמה". נשאר 67, צריך 68';
       $('o-ai').innerHTML='"עד גיל 67 זכאיות… אבל אישה בת 67 לא זכאית." <b style="color:var(--warn)">הדף סותר את עצמו.</b>';
-      $('jflow').hidden=false;narr('p2','התוצאה','היום: שלושה מקומות ביד, אחד פוספס. אחרי: שורה אחת, הכול התעדכן.');},T(3600)));
+      $('jflow').hidden=false;narr('p2','התוצאה',af?'שורה אחת, והכול התעדכן. עם שנה.':'שלושה מקומות ביד, אחד פוספס. הדף סותר את עצמו.');},T(3600)));
   });
   const mods=[['1','שעון','var(--gold)','מפעיל את הכול פעם בשנה, לפני ינואר.','{ "trigger": "2026-12-15 08:00" }'],
     ['2','רשימת הדפים','var(--auto)','מבקש מהאתר את כל הדפים שמתעדכנים בינואר.','405 דפים: { "title": "מענק עבודה (...)" }, …'],
