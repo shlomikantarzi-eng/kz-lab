@@ -246,6 +246,8 @@ details[open] summary{margin-bottom:10px}
 .sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
 .sc{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px}
 .sc b{color:var(--kz)} .sc p{font-size:.92rem}
+mark.fmk{unicode-bidi:isolate;direction:ltr;background:#FFE45C;color:#1B2A3A;font-weight:700;border-radius:4px;padding:1px 4px;outline:2px solid #E0B800}
+.fmt{unicode-bidi:isolate;font:700 .8rem var(--f-body);color:#fff;background:#D93025;border-radius:999px;padding:1px 8px;white-space:nowrap}
 mark.srch{background:#FFE45C;color:#1B2A3A;font-weight:700;border-radius:4px;padding:1px 6px}
 .notebox{margin-top:6px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
 .notebox .nb-h{display:block;background:var(--kzbox);font-size:.78rem;color:var(--muted);padding:3px 10px}
@@ -542,9 +544,9 @@ public static function onOutputPageParserOutput( OutputPage $out, ParserOutput $
 <div class="N"><figure class="shot" style="margin-top:8px"><div class="cons"><div class="cfm"><span class="gn">!</span><div class="cl">---</div><div class="cl"><span class="ck">image:</span> <span class="cu">https://www.kolzchut.org.il/w/he/skins/Cassandra/modules/cassandra/logo/logo3.1.he.2-lines-for-social-media.blue.200x200px.png</span></div><div class="cl"><span class="ck">title:</span> <span dir="rtl">מענק עבודה (מענק הכנסה, מס הכנסה שלילי)</span></div><div class="cl">---</div></div></div><figcaption><div class="lg"><b class="n">!</b><span>היום: רק <b>image</b> ו-<b>title</b>.</span></div></figcaption></figure></div>
 <pre class="l A" id="p3-out"><span class="add">---
 title: מענק עבודה (מענק הכנסה, מס הכנסה שלילי)
-url: https://www.kolzchut.org.il/he/מענק_עבודה_…
+<mark class="fmk">url: https://www.kolzchut.org.il/he/מענק_עבודה_…</mark>  <b class="fmt">← כתובת</b>
 provider: רשות המסים בישראל
-date_modified: 2026-07-06
+<mark class="fmk">date_modified: 2026-07-06</mark>  <b class="fmt">← תאריך</b>
 cite_as: "כל-זכות, מענק עבודה"
 ---</span>
 # מענק עבודה
